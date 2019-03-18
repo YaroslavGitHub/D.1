@@ -12,15 +12,16 @@
             <p id="demo2"></p>
 
         <script>
-            /*var INN = {}
+            var INN = ""
             INN = prompt("Enter your INN Введите Ваш ИНН")
             var dateOfBirth
-            var x
+            
 
            
             
-            x = INN.split("", 10);
-            console.log(x);*/
+            INN = INN.split("", 10);
+            var x = INN
+            console.log(x);
             function PersonINN( one, two, three, four, five, six, seven, eight, nine, ten ) {
             this.dg1 = one;
             this.dg2 = two;
@@ -33,8 +34,10 @@
             this.dg9 = nine;
             this.dg10 = ten;
             }
-            2063463479
-            var myINN = new PersonINN('2','0','6','3','4','6','3','4','7','9');
+            
+            var myINN = new PersonINN([x[0]], [x[1]],[x[2]],[x[3]],[x[4]],[x[5]],[x[6]],[x[7]],[x[8]],[x[9]])
+            
+            
             var sex
             var days
             var isCorrect
@@ -58,7 +61,11 @@
             PersonINN.prototype.ControlSum = function() {
             ControlSum = +this.dg1 * (-1) + +this.dg2 * 5 + +this.dg3 * 7 + +this.dg4 * 9 + +this.dg5 * 4 + +this.dg6 * 6 + +this.dg7 * 10 + +this.dg8 * 5 + +this.dg9 * 7;
             ControlNumber = ControlSum - Math.floor(ControlSum / 11)*11;
+            
                 if (+this.dg10 == ControlNumber) {
+                isCorrect = "true";
+                }
+                else if (+this.dg10 == ControlNumber - 10){
                 isCorrect = "true";
                 }
                 else (isCorrect = "false")

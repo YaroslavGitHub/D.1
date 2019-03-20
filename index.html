@@ -44,19 +44,6 @@
             var ControlSum
             var ControlNumber
             console.log(myINN);
-
-            PersonINN.prototype.dateOfBirth = function() {
-             days = this.dg1 + this.dg2 +this.dg3 + this.dg4 + this.dg5;
-             return +days
-            };
-
-            PersonINN.prototype.sex = function() {
-                if (+this.dg9 % 2 == 0) {
-                    sex = "female"
-                }
-                else ( sex = "male")
-             return sex;
-            };
             
             PersonINN.prototype.ControlSum = function() {
             ControlSum = +this.dg1 * (-1) + +this.dg2 * 5 + +this.dg3 * 7 + +this.dg4 * 9 + +this.dg5 * 4 + +this.dg6 * 6 + +this.dg7 * 10 + +this.dg8 * 5 + +this.dg9 * 7;
@@ -70,12 +57,36 @@
                 }
                 else (isCorrect = "false")
                 return isCorrect;
-            } 
+            }
+
+
+            PersonINN.prototype.dateOfBirth = function() {
+             days = this.dg1 + this.dg2 +this.dg3 + this.dg4 + this.dg5;
+             var d = new Date(00,00,00);
+             var dateBD = d.setDate(d.getDate() + +days);
+             var msec = Date.parse(d);
+             var dNow = new Date();
+             //var msecNow =  Date.parse(dNow);
+             //var ageP = msecNow - msec
+             ageP = dNow.getFullYear() - d.getFullYear();
+             
+             return dateBD;
+            };
+
+            PersonINN.prototype.sex = function() {
+                if (+this.dg9 % 2 == 0) {
+                    sex = "female"
+                }
+                else ( sex = "male")
+             return sex;
+            };
+            
+             
              
             
-                document.getElementById("demo").innerHTML = myINN.dateOfBirth();
-                document.getElementById("demo1").innerHTML = myINN.sex();
-                document.getElementById("demo2").innerHTML = myINN.ControlSum();
+                document.getElementById("demo").innerHTML = "dateOfBirth: " + myINN.dateOfBirth();
+                document.getElementById("demo1").innerHTML = "sex: " + myINN.sex();
+                document.getElementById("demo2").innerHTML = "isCorrect: " + myINN.ControlSum();
         </script>
     </body>
 </html>

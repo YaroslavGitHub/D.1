@@ -63,14 +63,14 @@
             PersonINN.prototype.dateOfBirth = function() {
              days = this.dg1 + this.dg2 +this.dg3 + this.dg4 + this.dg5;
              var d = new Date(00,00,00);
-             var dateBD = d.setDate(d.getDate() + +days);
+             d.setDate(d.getDate() + +days);
              var msec = Date.parse(d);
              var dNow = new Date();
              //var msecNow =  Date.parse(dNow);
              //var ageP = msecNow - msec
              ageP = dNow.getFullYear() - d.getFullYear();
              
-             return dateBD;
+             return [ageP,d];
             };
 
             PersonINN.prototype.sex = function() {

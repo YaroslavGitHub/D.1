@@ -33,12 +33,12 @@
             this.dg10 = ten;
             this.INNnumber = y;
             this.totalInfoTrue = function() {
-                return this.dateOfBirth() + " " + this.sex() + this.ControlSum() + this.INNnumber + this.FullYears()
+                return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()  + " , sex: " + this.sex() + ", dateOfBirth: "+this.dateOfBirth() + " , fullYears: " + this.FullYears();
                 };
 
             this.totalInfoFalse = function() {
-            return this.INNnumber + this.ControlSum()
-            };
+                 return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()
+                };
             }
             
             var myINN = new PersonINN([x[0]], [x[1]],[x[2]],[x[3]],[x[4]],[x[5]],[x[6]],[x[7]],[x[8]],[x[9]], x)
@@ -62,6 +62,7 @@
                 isCorrect = true;
                 }
                 else (isCorrect = false)
+                
                 return isCorrect;
             }
 
@@ -79,6 +80,8 @@
             PersonINN.prototype.FullYears = function() {
                 let dNow = new Date();
                 let d = new Date(00,00,00);
+                d.setDate(d.getDate() + +days);
+                d.toDateString();
              
              ageP = dNow.getFullYear() - d.getFullYear();
                 if (dNow.getMonth() < d.getMonth() ) {
@@ -99,20 +102,19 @@
 
             PersonINN.prototype.sex = function() {
                 if (+this.dg9 % 2 == 0) {
-                    sex = "female"
+                    sex = "female "
                 }
-                else ( sex = "male")
+                else ( sex = "male ")
              return sex;
             }
-            
-            console.log()
-
-
+  
             if ((myINN.ControlSum()) == false) {
                 document.getElementById("demo").innerHTML = myINN.totalInfoFalse();
+                console.log(myINN.totalInfoFalse());
             }
             else if ((myINN.ControlSum()) == true) {
                 document.getElementById("demo").innerHTML = myINN.totalInfoTrue();
+                console.log(myINN.totalInfoTrue());
             }
     
         </script>

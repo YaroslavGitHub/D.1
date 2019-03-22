@@ -20,25 +20,28 @@
             INN = INN.split("", 10);
             
             console.log(x);
-            function PersonINN( one, two, three, four, five, six, seven, eight, nine, ten, y ) {
-            this.dg1 = one;
-            this.dg2 = two;
-            this.dg3 = three;
-            this.dg4 = four;
-            this.dg5 = five;
-            this.dg6 = six;
-            this.dg7 = seven;
-            this.dg8 = eight;
-            this.dg9 = nine;
-            this.dg10 = ten;
-            this.INNnumber = y;
-            this.totalInfoTrue = function() {
-                return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()  + " , sex: " + this.sex() + ", dateOfBirth: "+this.dateOfBirth() + " , fullYears: " + this.FullYears();
-                };
 
-            this.totalInfoFalse = function() {
-                 return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()
-                };
+            function PersonINN( one, two, three, four, five, six, seven, eight, nine, ten, y ) {
+
+                this.dg1 = one;
+                this.dg2 = two;
+                this.dg3 = three;
+                this.dg4 = four;
+                this.dg5 = five;
+                this.dg6 = six;
+                this.dg7 = seven;
+                this.dg8 = eight;
+                this.dg9 = nine;
+                this.dg10 = ten;
+                this.INNnumber = y;
+
+                this.totalInfoTrue = function() {
+                    return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()  + " , sex: " + this.sex() + ", dateOfBirth: "+this.dateOfBirth() + " , fullYears: " + this.FullYears();
+                    };
+
+                this.totalInfoFalse = function() {
+                    return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()
+                    };
             }
             
             var myINN = new PersonINN([x[0]], [x[1]],[x[2]],[x[3]],[x[4]],[x[5]],[x[6]],[x[7]],[x[8]],[x[9]], x)
@@ -52,6 +55,7 @@
             console.log(myINN);
             
             PersonINN.prototype.ControlSum = function() {
+
             ControlSum = +this.dg1 * (-1) + +this.dg2 * 5 + +this.dg3 * 7 + +this.dg4 * 9 + +this.dg5 * 4 + +this.dg6 * 6 + +this.dg7 * 10 + +this.dg8 * 5 + +this.dg9 * 7;
             ControlNumber = ControlSum - Math.floor(ControlSum / 11)*11;
             
@@ -69,15 +73,17 @@
 
 
             PersonINN.prototype.dateOfBirth = function() {
-             days = this.dg1 + this.dg2 +this.dg3 + this.dg4 + this.dg5;
-             let d = new Date(00,00,00);
-             d.setDate(d.getDate() + +days);
-             d.toDateString();
-             
-             return d
+
+                days = this.dg1 + this.dg2 +this.dg3 + this.dg4 + this.dg5;
+                let d = new Date(00,00,00);
+                d.setDate(d.getDate() + +days);
+                d.toDateString();
+                
+                return d
             }
 
             PersonINN.prototype.FullYears = function() {
+
                 let dNow = new Date();
                 let d = new Date(00,00,00);
                 d.setDate(d.getDate() + +days);
@@ -101,6 +107,7 @@
 
 
             PersonINN.prototype.sex = function() {
+                
                 if (+this.dg9 % 2 == 0) {
                     sex = "female "
                 }
